@@ -8,6 +8,7 @@
 
 #import "ActionDetailTVController.h"
 #import "ActionsTVController.h"
+#import "TYSQLite.h"
 
 @interface ActionDetailTVController ()
 
@@ -31,16 +32,27 @@
 
 - (void)backToActions{
     //训练记录
-    NSString *excercise = self.excerciseField.text;
-    NSString *repetition = self.repetitionField.text;
-    NSString *resistance = self.resistanceField.text;
-    NSString *group = self.groupField.text;
-    NSDictionary *actionRecord = [[NSDictionary alloc] initWithObjectsAndKeys:excercise,@"excercise", self.catalogRec,@"catalog",resistance,@"resistance", repetition,@"repication",group,@"group", nil];
+    NSString *exercise = self.excerciseField.text;
+    double *repetition = (double *)self.repetitionField.text;
+    NSUInteger *resistance = self.resistanceField.text;
+    NSUInteger *group = (NSUInteger *)self.groupField.text;
+    NSDictionary *actionRecord = [[NSDictionary alloc] initWithObjectsAndKeys:exercise,@"exercise", self.catalogRec,@"catalog",resistance,@"resistance", repetition,@"repication",group,@"group", nil];
+    NotePad *actionNote = [[NotePad alloc] init];
+    
     //训练date
     NSDateFormatter *yearMonth = [[NSDateFormatter alloc] init];
     [yearMonth setDateFormat:@"YYYY-MM-dd"];
     NSDate *selected = [self.datePicker date];
     NSString *pickerDate = [yearMonth stringFromDate:selected];
+    
+    actionNote.catalog = self.catalogRec;
+    actionNote.exercise = exercise;
+    actionNote.resistance = resistance;
+    actionNote.repetition = repetition;
+    actionNote.group = group;
+    actionNote.date = pickerDate;
+//    actionNote.tagID = tagID;
+    actionNote.status = @"willRecord";
     
     //Insert delegate code
     //delegate date

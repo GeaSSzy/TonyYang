@@ -7,6 +7,7 @@
 //
 
 #import "DetailTVController.h"
+#import "TYSQLite.h"
 #import "TYhelper.h"
 
 static NSString *DetailCell = @"DetailCell";

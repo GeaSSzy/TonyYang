@@ -9,7 +9,8 @@
 /* Begin PBXBuildFile section */
 		410859F31C1EEC8D008CA41F /* calender.json in Resources */ = {isa = PBXBuildFile; fileRef = 410859F21C1EEC8D008CA41F /* calender.json */; };
 		411D706C1C183BEA00507456 /* inputDict.json in Resources */ = {isa = PBXBuildFile; fileRef = 411D706B1C183BEA00507456 /* inputDict.json */; };
-		414D67E01C1D19DB003A14AE /* TYCalenderController.m in Sources */ = {isa = PBXBuildFile; fileRef = 414D67DF1C1D19DB003A14AE /* TYCalenderController.m */; };
+		413FD0841C2D0C000070E766 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 413FD0831C2D0C000070E766 /* libsqlite3.0.tbd */; };
+		413FD0871C2D0E0A0070E766 /* TYSQLite.m in Sources */ = {isa = PBXBuildFile; fileRef = 413FD0861C2D0E0A0070E766 /* TYSQLite.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		414D67F41C1D2732003A14AE /* LGCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 414D67E91C1D2732003A14AE /* LGCalendar.m */; };
 		414D67F51C1D2732003A14AE /* LGCalendarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 414D67EB1C1D2732003A14AE /* LGCalendarButton.m */; };
 		414D67F61C1D2732003A14AE /* LGCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 414D67ED1C1D2732003A14AE /* LGCalendarCell.m */; };
@@ -65,8 +66,11 @@
 /* Begin PBXFileReference section */
 		410859F21C1EEC8D008CA41F /* calender.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = calender.json; path = ../../calender.json; sourceTree = "<group>"; };
 		411D706B1C183BEA00507456 /* inputDict.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = inputDict.json; sourceTree = "<group>"; };
-		414D67DE1C1D19DB003A14AE /* TYCalenderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYCalenderController.h; sourceTree = "<group>"; };
-		414D67DF1C1D19DB003A14AE /* TYCalenderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYCalenderController.m; sourceTree = "<group>"; };
+		413FD0831C2D0C000070E766 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		413FD0851C2D0E0A0070E766 /* TYSQLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TYSQLite.h; path = "Supporting Test Files/TYSQLite.h"; sourceTree = "<group>"; };
+		413FD0861C2D0E0A0070E766 /* TYSQLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TYSQLite.m; path = "Supporting Test Files/TYSQLite.m"; sourceTree = "<group>"; };
+		413FD0881C2D1E250070E766 /* NotePad.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NotePad.h; path = ../NotePad.h; sourceTree = "<group>"; };
+		413FD0891C2D1E3F0070E766 /* NoteDb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NoteDb.h; path = ../NoteDb.h; sourceTree = "<group>"; };
 		414D67E81C1D2732003A14AE /* LGCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGCalendar.h; sourceTree = "<group>"; };
 		414D67E91C1D2732003A14AE /* LGCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGCalendar.m; sourceTree = "<group>"; };
 		414D67EA1C1D2732003A14AE /* LGCalendarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGCalendarButton.h; sourceTree = "<group>"; };
@@ -140,6 +144,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				413FD0841C2D0C000070E766 /* libsqlite3.0.tbd in Frameworks */,
 				416D46321C2CCACD003D36A5 /* libz.1.2.5.tbd in Frameworks */,
 				41B31BBB1C2AC576008FF894 /* MobileCoreServices.framework in Frameworks */,
 				41B31BB91C2AC56C008FF894 /* SystemConfiguration.framework in Frameworks */,
@@ -204,7 +209,6 @@
 		4170FD671C18302500300602 = {
 			isa = PBXGroup;
 			children = (
-				416D46311C2CCACD003D36A5 /* libz.1.2.5.tbd */,
 				416D462D1C2CC476003D36A5 /* Reachability */,
 				41B31B3E1C2AC50A008FF894 /* Classes */,
 				414D67E71C1D2732003A14AE /* calender */,
@@ -212,9 +216,11 @@
 				4170FD8F1C18302500300602 /* TonyYangTests */,
 				4170FD9A1C18302500300602 /* TonyYangUITests */,
 				4170FD711C18302500300602 /* Products */,
-				41B31BB81C2AC56C008FF894 /* SystemConfiguration.framework */,
-				41B31BBA1C2AC576008FF894 /* MobileCoreServices.framework */,
 				41B31BB61C2AC55A008FF894 /* CFNetwork.framework */,
+				41B31BBA1C2AC576008FF894 /* MobileCoreServices.framework */,
+				41B31BB81C2AC56C008FF894 /* SystemConfiguration.framework */,
+				416D46311C2CCACD003D36A5 /* libz.1.2.5.tbd */,
+				413FD0831C2D0C000070E766 /* libsqlite3.0.tbd */,
 			);
 			sourceTree = "<group>";
 		};
@@ -258,8 +264,10 @@
 		4170FD731C18302500300602 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				414D67DE1C1D19DB003A14AE /* TYCalenderController.h */,
-				414D67DF1C1D19DB003A14AE /* TYCalenderController.m */,
+				413FD0881C2D1E250070E766 /* NotePad.h */,
+				413FD0891C2D1E3F0070E766 /* NoteDb.h */,
+				413FD0851C2D0E0A0070E766 /* TYSQLite.h */,
+				413FD0861C2D0E0A0070E766 /* TYSQLite.m */,
 				4170FDAC1C18344100300602 /* TYhelper.h */,
 				4170FDAD1C18344100300602 /* TYhelper.m */,
 				4170FD741C18302500300602 /* main.m */,
@@ -445,7 +453,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				414D67F71C1D2732003A14AE /* LGCalendarHeadView.m in Sources */,
-				414D67E01C1D19DB003A14AE /* TYCalenderController.m in Sources */,
 				41B31B941C2AC50A008FF894 /* ASIDownloadCache.m in Sources */,
 				414D67F51C1D2732003A14AE /* LGCalendarButton.m in Sources */,
 				416D46301C2CC476003D36A5 /* Reachability.m in Sources */,
@@ -469,6 +476,7 @@
 				414D67F61C1D2732003A14AE /* LGCalendarCell.m in Sources */,
 				41C14DC51C281EEA00BF6DA1 /* PositionsTVController.m in Sources */,
 				4170FD751C18302500300602 /* main.m in Sources */,
+				413FD0871C2D0E0A0070E766 /* TYSQLite.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

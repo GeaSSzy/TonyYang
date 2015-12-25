@@ -1,0 +1,22 @@
+{
+  "records": [
+    {
+      "catalog": "Back", 
+      "date": "2015-12-03", 
+      "excercise": "Dead Lift", 
+      "group": 4, 
+      "repitation": 8, 
+      "resistance": 30, 
+      "uuid": "0dca7d12-96b1-11e5-99ca-024d03c2f759"
+    }, 
+    {
+      "catalog": "Back", 
+      "date": "2015-12-03", 
+      "excercise": "Dead Lift", 
+      "group": 4, 
+      "repitation": 8, 
+      "resistance": 30, 
+      "uuid": "0dca7d12-96b2-11e5-99ca-024d03c2f759"
+    }
+  ]
+}

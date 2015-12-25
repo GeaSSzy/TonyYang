@@ -7,15 +7,42 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		410859F31C1EEC8D008CA41F /* calender.json in Resources */ = {isa = PBXBuildFile; fileRef = 410859F21C1EEC8D008CA41F /* calender.json */; };
+		411D706C1C183BEA00507456 /* inputDict.json in Resources */ = {isa = PBXBuildFile; fileRef = 411D706B1C183BEA00507456 /* inputDict.json */; };
+		414D67E01C1D19DB003A14AE /* TYCalenderController.m in Sources */ = {isa = PBXBuildFile; fileRef = 414D67DF1C1D19DB003A14AE /* TYCalenderController.m */; };
+		414D67F41C1D2732003A14AE /* LGCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 414D67E91C1D2732003A14AE /* LGCalendar.m */; };
+		414D67F51C1D2732003A14AE /* LGCalendarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 414D67EB1C1D2732003A14AE /* LGCalendarButton.m */; };
+		414D67F61C1D2732003A14AE /* LGCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 414D67ED1C1D2732003A14AE /* LGCalendarCell.m */; };
+		414D67F71C1D2732003A14AE /* LGCalendarHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 414D67EF1C1D2732003A14AE /* LGCalendarHeadView.m */; };
+		414D67F81C1D2732003A14AE /* NSDate+calender.m in Sources */ = {isa = PBXBuildFile; fileRef = 414D67F11C1D2732003A14AE /* NSDate+calender.m */; };
+		414D67F91C1D2732003A14AE /* UIVew+LGExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 414D67F31C1D2732003A14AE /* UIVew+LGExtension.m */; };
+		416D46301C2CC476003D36A5 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 416D462F1C2CC476003D36A5 /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		416D46321C2CCACD003D36A5 /* libz.1.2.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 416D46311C2CCACD003D36A5 /* libz.1.2.5.tbd */; };
 		4170FD751C18302500300602 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4170FD741C18302500300602 /* main.m */; };
 		4170FD781C18302500300602 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4170FD771C18302500300602 /* AppDelegate.m */; };
 		4170FD7B1C18302500300602 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4170FD7A1C18302500300602 /* FirstViewController.m */; };
-		4170FD7E1C18302500300602 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4170FD7D1C18302500300602 /* SecondViewController.m */; };
+		4170FD7E1C18302500300602 /* HistoryDataTVController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4170FD7D1C18302500300602 /* HistoryDataTVController.m */; };
 		4170FD811C18302500300602 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4170FD7F1C18302500300602 /* Main.storyboard */; };
 		4170FD831C18302500300602 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4170FD821C18302500300602 /* Assets.xcassets */; };
 		4170FD861C18302500300602 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4170FD841C18302500300602 /* LaunchScreen.storyboard */; };
 		4170FD911C18302500300602 /* TonyYangTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4170FD901C18302500300602 /* TonyYangTests.m */; };
 		4170FD9C1C18302500300602 /* TonyYangUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4170FD9B1C18302500300602 /* TonyYangUITests.m */; };
+		4170FDAB1C1833C900300602 /* DetailTVController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4170FDAA1C1833C900300602 /* DetailTVController.m */; };
+		4170FDAE1C18344100300602 /* TYhelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4170FDAD1C18344100300602 /* TYhelper.m */; };
+		41A30E0C1C26682C009DC7A8 /* ActionsTVController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A30E0B1C26682C009DC7A8 /* ActionsTVController.m */; };
+		41A30E491C26D992009DC7A8 /* ActionDetailTVController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A30E481C26D992009DC7A8 /* ActionDetailTVController.m */; };
+		41B31B911C2AC50A008FF894 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 41B31B401C2AC50A008FF894 /* ASIAuthenticationDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		41B31B921C2AC50A008FF894 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 41B31B431C2AC50A008FF894 /* ASIDataCompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		41B31B931C2AC50A008FF894 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 41B31B451C2AC50A008FF894 /* ASIDataDecompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		41B31B941C2AC50A008FF894 /* ASIDownloadCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 41B31B471C2AC50A008FF894 /* ASIDownloadCache.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		41B31B951C2AC50A008FF894 /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 41B31B491C2AC50A008FF894 /* ASIFormDataRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		41B31B961C2AC50A008FF894 /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 41B31B4B1C2AC50A008FF894 /* ASIHTTPRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		41B31B971C2AC50A008FF894 /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 41B31B4F1C2AC50A008FF894 /* ASIInputStream.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		41B31B981C2AC50A008FF894 /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 41B31B511C2AC50A008FF894 /* ASINetworkQueue.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		41B31BB71C2AC55A008FF894 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41B31BB61C2AC55A008FF894 /* CFNetwork.framework */; };
+		41B31BB91C2AC56C008FF894 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41B31BB81C2AC56C008FF894 /* SystemConfiguration.framework */; };
+		41B31BBB1C2AC576008FF894 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41B31BBA1C2AC576008FF894 /* MobileCoreServices.framework */; };
+		41C14DC51C281EEA00BF6DA1 /* PositionsTVController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41C14DC41C281EEA00BF6DA1 /* PositionsTVController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,14 +63,33 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		410859F21C1EEC8D008CA41F /* calender.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = calender.json; path = ../../calender.json; sourceTree = "<group>"; };
+		411D706B1C183BEA00507456 /* inputDict.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = inputDict.json; sourceTree = "<group>"; };
+		414D67DE1C1D19DB003A14AE /* TYCalenderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYCalenderController.h; sourceTree = "<group>"; };
+		414D67DF1C1D19DB003A14AE /* TYCalenderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYCalenderController.m; sourceTree = "<group>"; };
+		414D67E81C1D2732003A14AE /* LGCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGCalendar.h; sourceTree = "<group>"; };
+		414D67E91C1D2732003A14AE /* LGCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGCalendar.m; sourceTree = "<group>"; };
+		414D67EA1C1D2732003A14AE /* LGCalendarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGCalendarButton.h; sourceTree = "<group>"; };
+		414D67EB1C1D2732003A14AE /* LGCalendarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGCalendarButton.m; sourceTree = "<group>"; };
+		414D67EC1C1D2732003A14AE /* LGCalendarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGCalendarCell.h; sourceTree = "<group>"; };
+		414D67ED1C1D2732003A14AE /* LGCalendarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGCalendarCell.m; sourceTree = "<group>"; };
+		414D67EE1C1D2732003A14AE /* LGCalendarHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGCalendarHeadView.h; sourceTree = "<group>"; };
+		414D67EF1C1D2732003A14AE /* LGCalendarHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGCalendarHeadView.m; sourceTree = "<group>"; };
+		414D67F01C1D2732003A14AE /* NSDate+calender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+calender.h"; sourceTree = "<group>"; };
+		414D67F11C1D2732003A14AE /* NSDate+calender.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+calender.m"; sourceTree = "<group>"; };
+		414D67F21C1D2732003A14AE /* UIVew+LGExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIVew+LGExtension.h"; sourceTree = "<group>"; };
+		414D67F31C1D2732003A14AE /* UIVew+LGExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIVew+LGExtension.m"; sourceTree = "<group>"; };
+		416D462E1C2CC476003D36A5 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		416D462F1C2CC476003D36A5 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		416D46311C2CCACD003D36A5 /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.5.tbd; path = usr/lib/libz.1.2.5.tbd; sourceTree = SDKROOT; };
 		4170FD701C18302500300602 /* TonyYang.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TonyYang.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4170FD741C18302500300602 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4170FD761C18302500300602 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4170FD771C18302500300602 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		4170FD791C18302500300602 /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
 		4170FD7A1C18302500300602 /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
-		4170FD7C1C18302500300602 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		4170FD7D1C18302500300602 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		4170FD7C1C18302500300602 /* HistoryDataTVController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistoryDataTVController.h; sourceTree = "<group>"; };
+		4170FD7D1C18302500300602 /* HistoryDataTVController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HistoryDataTVController.m; sourceTree = "<group>"; };
 		4170FD801C18302500300602 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4170FD821C18302500300602 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4170FD851C18302500300602 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -54,6 +100,39 @@
 		4170FD971C18302500300602 /* TonyYangUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TonyYangUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4170FD9B1C18302500300602 /* TonyYangUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TonyYangUITests.m; sourceTree = "<group>"; };
 		4170FD9D1C18302500300602 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4170FDA91C1833C900300602 /* DetailTVController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailTVController.h; sourceTree = "<group>"; };
+		4170FDAA1C1833C900300602 /* DetailTVController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailTVController.m; sourceTree = "<group>"; };
+		4170FDAC1C18344100300602 /* TYhelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYhelper.h; sourceTree = "<group>"; };
+		4170FDAD1C18344100300602 /* TYhelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYhelper.m; sourceTree = "<group>"; };
+		41A30E0A1C26682C009DC7A8 /* ActionsTVController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionsTVController.h; sourceTree = "<group>"; };
+		41A30E0B1C26682C009DC7A8 /* ActionsTVController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionsTVController.m; sourceTree = "<group>"; };
+		41A30E471C26D992009DC7A8 /* ActionDetailTVController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionDetailTVController.h; sourceTree = "<group>"; };
+		41A30E481C26D992009DC7A8 /* ActionDetailTVController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionDetailTVController.m; sourceTree = "<group>"; };
+		41B31B3F1C2AC50A008FF894 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
+		41B31B401C2AC50A008FF894 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
+		41B31B411C2AC50A008FF894 /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
+		41B31B421C2AC50A008FF894 /* ASIDataCompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDataCompressor.h; sourceTree = "<group>"; };
+		41B31B431C2AC50A008FF894 /* ASIDataCompressor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIDataCompressor.m; sourceTree = "<group>"; };
+		41B31B441C2AC50A008FF894 /* ASIDataDecompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDataDecompressor.h; sourceTree = "<group>"; };
+		41B31B451C2AC50A008FF894 /* ASIDataDecompressor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIDataDecompressor.m; sourceTree = "<group>"; };
+		41B31B461C2AC50A008FF894 /* ASIDownloadCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDownloadCache.h; sourceTree = "<group>"; };
+		41B31B471C2AC50A008FF894 /* ASIDownloadCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIDownloadCache.m; sourceTree = "<group>"; };
+		41B31B481C2AC50A008FF894 /* ASIFormDataRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIFormDataRequest.h; sourceTree = "<group>"; };
+		41B31B491C2AC50A008FF894 /* ASIFormDataRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIFormDataRequest.m; sourceTree = "<group>"; };
+		41B31B4A1C2AC50A008FF894 /* ASIHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequest.h; sourceTree = "<group>"; };
+		41B31B4B1C2AC50A008FF894 /* ASIHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIHTTPRequest.m; sourceTree = "<group>"; };
+		41B31B4C1C2AC50A008FF894 /* ASIHTTPRequestConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequestConfig.h; sourceTree = "<group>"; };
+		41B31B4D1C2AC50A008FF894 /* ASIHTTPRequestDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequestDelegate.h; sourceTree = "<group>"; };
+		41B31B4E1C2AC50A008FF894 /* ASIInputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIInputStream.h; sourceTree = "<group>"; };
+		41B31B4F1C2AC50A008FF894 /* ASIInputStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIInputStream.m; sourceTree = "<group>"; };
+		41B31B501C2AC50A008FF894 /* ASINetworkQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASINetworkQueue.h; sourceTree = "<group>"; };
+		41B31B511C2AC50A008FF894 /* ASINetworkQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASINetworkQueue.m; sourceTree = "<group>"; };
+		41B31B521C2AC50A008FF894 /* ASIProgressDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIProgressDelegate.h; sourceTree = "<group>"; };
+		41B31BB61C2AC55A008FF894 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		41B31BB81C2AC56C008FF894 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		41B31BBA1C2AC576008FF894 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		41C14DC31C281EEA00BF6DA1 /* PositionsTVController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PositionsTVController.h; sourceTree = "<group>"; };
+		41C14DC41C281EEA00BF6DA1 /* PositionsTVController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PositionsTVController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +140,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				416D46321C2CCACD003D36A5 /* libz.1.2.5.tbd in Frameworks */,
+				41B31BBB1C2AC576008FF894 /* MobileCoreServices.framework in Frameworks */,
+				41B31BB91C2AC56C008FF894 /* SystemConfiguration.framework in Frameworks */,
+				41B31BB71C2AC55A008FF894 /* CFNetwork.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,13 +164,57 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		411D706A1C183BC500507456 /* Supporting Test Files */ = {
+			isa = PBXGroup;
+			children = (
+				410859F21C1EEC8D008CA41F /* calender.json */,
+				411D706B1C183BEA00507456 /* inputDict.json */,
+			);
+			path = "Supporting Test Files";
+			sourceTree = "<group>";
+		};
+		414D67E71C1D2732003A14AE /* calender */ = {
+			isa = PBXGroup;
+			children = (
+				414D67E81C1D2732003A14AE /* LGCalendar.h */,
+				414D67E91C1D2732003A14AE /* LGCalendar.m */,
+				414D67EC1C1D2732003A14AE /* LGCalendarCell.h */,
+				414D67ED1C1D2732003A14AE /* LGCalendarCell.m */,
+				414D67EE1C1D2732003A14AE /* LGCalendarHeadView.h */,
+				414D67EF1C1D2732003A14AE /* LGCalendarHeadView.m */,
+				414D67EA1C1D2732003A14AE /* LGCalendarButton.h */,
+				414D67EB1C1D2732003A14AE /* LGCalendarButton.m */,
+				414D67F01C1D2732003A14AE /* NSDate+calender.h */,
+				414D67F11C1D2732003A14AE /* NSDate+calender.m */,
+				414D67F21C1D2732003A14AE /* UIVew+LGExtension.h */,
+				414D67F31C1D2732003A14AE /* UIVew+LGExtension.m */,
+			);
+			path = calender;
+			sourceTree = "<group>";
+		};
+		416D462D1C2CC476003D36A5 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				416D462E1C2CC476003D36A5 /* Reachability.h */,
+				416D462F1C2CC476003D36A5 /* Reachability.m */,
+			);
+			path = Reachability;
+			sourceTree = "<group>";
+		};
 		4170FD671C18302500300602 = {
 			isa = PBXGroup;
 			children = (
+				416D46311C2CCACD003D36A5 /* libz.1.2.5.tbd */,
+				416D462D1C2CC476003D36A5 /* Reachability */,
+				41B31B3E1C2AC50A008FF894 /* Classes */,
+				414D67E71C1D2732003A14AE /* calender */,
 				4170FD721C18302500300602 /* TonyYang */,
 				4170FD8F1C18302500300602 /* TonyYangTests */,
 				4170FD9A1C18302500300602 /* TonyYangUITests */,
 				4170FD711C18302500300602 /* Products */,
+				41B31BB81C2AC56C008FF894 /* SystemConfiguration.framework */,
+				41B31BBA1C2AC576008FF894 /* MobileCoreServices.framework */,
+				41B31BB61C2AC55A008FF894 /* CFNetwork.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -108,12 +235,21 @@
 				4170FD771C18302500300602 /* AppDelegate.m */,
 				4170FD791C18302500300602 /* FirstViewController.h */,
 				4170FD7A1C18302500300602 /* FirstViewController.m */,
-				4170FD7C1C18302500300602 /* SecondViewController.h */,
-				4170FD7D1C18302500300602 /* SecondViewController.m */,
+				4170FD7C1C18302500300602 /* HistoryDataTVController.h */,
+				4170FD7D1C18302500300602 /* HistoryDataTVController.m */,
+				4170FDA91C1833C900300602 /* DetailTVController.h */,
+				4170FDAA1C1833C900300602 /* DetailTVController.m */,
+				41C14DC31C281EEA00BF6DA1 /* PositionsTVController.h */,
+				41C14DC41C281EEA00BF6DA1 /* PositionsTVController.m */,
+				41A30E0A1C26682C009DC7A8 /* ActionsTVController.h */,
+				41A30E0B1C26682C009DC7A8 /* ActionsTVController.m */,
+				41A30E471C26D992009DC7A8 /* ActionDetailTVController.h */,
+				41A30E481C26D992009DC7A8 /* ActionDetailTVController.m */,
 				4170FD7F1C18302500300602 /* Main.storyboard */,
 				4170FD821C18302500300602 /* Assets.xcassets */,
 				4170FD841C18302500300602 /* LaunchScreen.storyboard */,
 				4170FD871C18302500300602 /* Info.plist */,
+				411D706A1C183BC500507456 /* Supporting Test Files */,
 				4170FD731C18302500300602 /* Supporting Files */,
 			);
 			path = TonyYang;
@@ -122,6 +258,10 @@
 		4170FD731C18302500300602 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				414D67DE1C1D19DB003A14AE /* TYCalenderController.h */,
+				414D67DF1C1D19DB003A14AE /* TYCalenderController.m */,
+				4170FDAC1C18344100300602 /* TYhelper.h */,
+				4170FDAD1C18344100300602 /* TYhelper.m */,
 				4170FD741C18302500300602 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -143,6 +283,33 @@
 				4170FD9D1C18302500300602 /* Info.plist */,
 			);
 			path = TonyYangUITests;
+			sourceTree = "<group>";
+		};
+		41B31B3E1C2AC50A008FF894 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				41B31B3F1C2AC50A008FF894 /* ASIAuthenticationDialog.h */,
+				41B31B401C2AC50A008FF894 /* ASIAuthenticationDialog.m */,
+				41B31B411C2AC50A008FF894 /* ASICacheDelegate.h */,
+				41B31B421C2AC50A008FF894 /* ASIDataCompressor.h */,
+				41B31B431C2AC50A008FF894 /* ASIDataCompressor.m */,
+				41B31B441C2AC50A008FF894 /* ASIDataDecompressor.h */,
+				41B31B451C2AC50A008FF894 /* ASIDataDecompressor.m */,
+				41B31B461C2AC50A008FF894 /* ASIDownloadCache.h */,
+				41B31B471C2AC50A008FF894 /* ASIDownloadCache.m */,
+				41B31B481C2AC50A008FF894 /* ASIFormDataRequest.h */,
+				41B31B491C2AC50A008FF894 /* ASIFormDataRequest.m */,
+				41B31B4A1C2AC50A008FF894 /* ASIHTTPRequest.h */,
+				41B31B4B1C2AC50A008FF894 /* ASIHTTPRequest.m */,
+				41B31B4C1C2AC50A008FF894 /* ASIHTTPRequestConfig.h */,
+				41B31B4D1C2AC50A008FF894 /* ASIHTTPRequestDelegate.h */,
+				41B31B4E1C2AC50A008FF894 /* ASIInputStream.h */,
+				41B31B4F1C2AC50A008FF894 /* ASIInputStream.m */,
+				41B31B501C2AC50A008FF894 /* ASINetworkQueue.h */,
+				41B31B511C2AC50A008FF894 /* ASINetworkQueue.m */,
+				41B31B521C2AC50A008FF894 /* ASIProgressDelegate.h */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -250,7 +417,9 @@
 			files = (
 				4170FD861C18302500300602 /* LaunchScreen.storyboard in Resources */,
 				4170FD831C18302500300602 /* Assets.xcassets in Resources */,
+				411D706C1C183BEA00507456 /* inputDict.json in Resources */,
 				4170FD811C18302500300602 /* Main.storyboard in Resources */,
+				410859F31C1EEC8D008CA41F /* calender.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,9 +444,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4170FD7E1C18302500300602 /* SecondViewController.m in Sources */,
+				414D67F71C1D2732003A14AE /* LGCalendarHeadView.m in Sources */,
+				414D67E01C1D19DB003A14AE /* TYCalenderController.m in Sources */,
+				41B31B941C2AC50A008FF894 /* ASIDownloadCache.m in Sources */,
+				414D67F51C1D2732003A14AE /* LGCalendarButton.m in Sources */,
+				416D46301C2CC476003D36A5 /* Reachability.m in Sources */,
+				4170FDAB1C1833C900300602 /* DetailTVController.m in Sources */,
+				41B31B961C2AC50A008FF894 /* ASIHTTPRequest.m in Sources */,
+				414D67F81C1D2732003A14AE /* NSDate+calender.m in Sources */,
+				4170FD7E1C18302500300602 /* HistoryDataTVController.m in Sources */,
+				41B31B981C2AC50A008FF894 /* ASINetworkQueue.m in Sources */,
+				41B31B951C2AC50A008FF894 /* ASIFormDataRequest.m in Sources */,
+				41B31B931C2AC50A008FF894 /* ASIDataDecompressor.m in Sources */,
+				414D67F91C1D2732003A14AE /* UIVew+LGExtension.m in Sources */,
 				4170FD781C18302500300602 /* AppDelegate.m in Sources */,
+				414D67F41C1D2732003A14AE /* LGCalendar.m in Sources */,
+				41B31B971C2AC50A008FF894 /* ASIInputStream.m in Sources */,
+				41A30E0C1C26682C009DC7A8 /* ActionsTVController.m in Sources */,
 				4170FD7B1C18302500300602 /* FirstViewController.m in Sources */,
+				4170FDAE1C18344100300602 /* TYhelper.m in Sources */,
+				41B31B921C2AC50A008FF894 /* ASIDataCompressor.m in Sources */,
+				41B31B911C2AC50A008FF894 /* ASIAuthenticationDialog.m in Sources */,
+				41A30E491C26D992009DC7A8 /* ActionDetailTVController.m in Sources */,
+				414D67F61C1D2732003A14AE /* LGCalendarCell.m in Sources */,
+				41C14DC51C281EEA00BF6DA1 /* PositionsTVController.m in Sources */,
 				4170FD751C18302500300602 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -417,9 +607,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				INFOPLIST_FILE = TonyYang/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.geass.TonyYang;
+				PRODUCT_MODULE_NAME = TonyYang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -428,9 +620,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				INFOPLIST_FILE = TonyYang/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.geass.TonyYang;
+				PRODUCT_MODULE_NAME = TonyYang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -502,6 +696,7 @@
 				4170FDA21C18302500300602 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4170FDA31C18302500300602 /* Build configuration list for PBXNativeTarget "TonyYangTests" */ = {
 			isa = XCConfigurationList;
@@ -510,6 +705,7 @@
 				4170FDA51C18302500300602 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4170FDA61C18302500300602 /* Build configuration list for PBXNativeTarget "TonyYangUITests" */ = {
 			isa = XCConfigurationList;
@@ -518,6 +714,7 @@
 				4170FDA81C18302500300602 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

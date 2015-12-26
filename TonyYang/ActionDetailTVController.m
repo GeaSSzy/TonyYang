@@ -33,10 +33,12 @@
 - (void)backToActions{
     //训练记录
     NSString *exercise = self.excerciseField.text;
-    double *repetition = (double *)self.repetitionField.text;
-    NSUInteger *resistance = self.resistanceField.text;
-    NSUInteger *group = (NSUInteger *)self.groupField.text;
-    NSDictionary *actionRecord = [[NSDictionary alloc] initWithObjectsAndKeys:exercise,@"exercise", self.catalogRec,@"catalog",resistance,@"resistance", repetition,@"repication",group,@"group", nil];
+    NSString *repetition = self.repetitionField.text;
+    NSString *resistance = self.resistanceField.text;
+    NSString *group = self.groupField.text;
+    NSString *resistance1 = self.resistanceField.text;
+    NSString *group1 = self.groupField.text;
+    NSDictionary *actionRecord = [[NSDictionary alloc] initWithObjectsAndKeys:exercise,@"exercise", self.catalogRec,@"catalog",resistance1,@"resistance", repetition,@"repication",group1,@"group", nil];
     NotePad *actionNote = [[NotePad alloc] init];
     
     //训练date
@@ -45,27 +47,42 @@
     NSDate *selected = [self.datePicker date];
     NSString *pickerDate = [yearMonth stringFromDate:selected];
     
+    //create tagID
+    NSDateFormatter *forTagID = [[NSDateFormatter alloc] init];
+    [forTagID setDateFormat:@"YYYYMMddHHmmss"];
+    NSDate *recordDate = [NSDate date];
+    NSString *tagID = [forTagID stringFromDate:recordDate];
+    
     actionNote.catalog = self.catalogRec;
     actionNote.exercise = exercise;
     actionNote.resistance = resistance;
     actionNote.repetition = repetition;
     actionNote.group = group;
     actionNote.date = pickerDate;
-//    actionNote.tagID = tagID;
+    NSLog(@"date is %@",actionNote.date);
+    actionNote.tagID = tagID;
+    actionNote.uuid = @"uuidNeeded";
     actionNote.status = @"willRecord";
     
+//insert into SQLite
+    
+    TYSQLite *tySql = [[TYSQLite alloc] init];
+    
+        BOOL insertOK = [tySql insert:actionNote];
+
     //Insert delegate code
     //delegate date
     [self.delegate setValue:pickerDate forKey:@"recordDate"];
     //delegate record
     if ([self.delegate respondsToSelector:@selector(refreshSectionAndCell:)]) {
-        [self.delegate setValue:actionRecord forKey:@"gotRecord"];
+        [self.delegate setValue:actionNote forKey:@"gotRecord"];
     }
     
     //popOut
     for (UIViewController *actionsTV in self.navigationController.viewControllers){
         if ([actionsTV isKindOfClass:[ActionsTVController class]]) {
             [self.delegate performSelector:@selector(refreshSectionAndCell:)withObject:actionRecord];
+            NSLog(@"popOut");
             [self.navigationController popToViewController:actionsTV animated:YES];
         }
     }

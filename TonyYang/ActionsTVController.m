@@ -8,7 +8,6 @@
 
 #import "ActionsTVController.h"
 #import "ActionDetailTVController.h"
-#import "TYSQLite.h"
 
 static NSString *DetailCell = @"actionsCell";
 
@@ -23,8 +22,8 @@ static NSString *DetailCell = @"actionsCell";
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     self.title = self.catalogGot;
-    NSLog(@"CatalogGot is %@",self.catalogGot);
-    NSLog(@"gotRecord is %@",self.gotRecord);
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -32,19 +31,26 @@ static NSString *DetailCell = @"actionsCell";
     // Dispose of any resources that can be recreated.
 }
 
-//- (void)viewWillAppear:(BOOL)animated{
-//   
-//    NSLog(@"recordArray1111 is %@",self.records);
-//    NSLog(@"gotRecord1111 is %@",self.gotRecord);
-//    NSLog(@"TodayRecord1111 is %@",self.todayRecord);
-//}
+- (void)viewWillAppear:(BOOL)animated{
+    NSDateFormatter *yearMonth = [[NSDateFormatter alloc] init];
+    [yearMonth setDateFormat:@"YYYY-MM-dd"];
+    NSDate *today = [NSDate date];
+    NSString *todayStr = [yearMonth stringFromDate:today];
 
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-//    if ([segue.identifier isEqualToString:@"Add action"]){
-//        ActionDetailTVController *detailTV = segue.destinationViewController;
-//        detailTV.catalogRec = self.catalogGot;
-//    }
-//}
+//selectNotes
+    NSString *selectString = [[NSString alloc] initWithFormat:@"select * from note where catalog=\"%@\" and date=\"%@\"", self.catalogGot,todayStr];
+    NSLog(@"selectString is %@",selectString);
+    NSMutableArray *recordArray = [[NSMutableArray alloc] init];
+
+    TYSQLite *tySql = [[TYSQLite alloc] init];
+    if([tySql open] != 0){
+        recordArray = [tySql selectNotes:selectString];
+        NSLog(@"recordArray is %@",recordArray);
+        if ([recordArray count] != 0) {
+            self.records = recordArray;
+        }
+    }
+}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     UIViewController *destination = segue.destinationViewController;
@@ -63,8 +69,7 @@ static NSString *DetailCell = @"actionsCell";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    NSArray *array = [self.todayRecord objectForKey:@"records"];
-    return [array count];
+    return [self.records count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -77,34 +82,34 @@ static NSString *DetailCell = @"actionsCell";
                 reuseIdentifier:DetailCell];
     }
     
-    cell.textLabel.text = [[self.records objectAtIndex:row] objectForKey:@"excercise"];
+    NotePad *recordNote = [self.records objectAtIndex:row];
+    cell.textLabel.text = recordNote.exercise;
+//    cell.textLabel.text = [[self.records objectAtIndex:row] objectForKey:@"exercise"];
     
-    NSString *repetition = [[self.records objectAtIndex:row] objectForKey:@"repication"];
-    NSString *resistance = [[self.records objectAtIndex:row] objectForKey:@"resistance"];
-    NSString *group = [[self.records objectAtIndex:row] objectForKey:@"group"];
+    NSString *repetition = recordNote.repetition;
+    NSString *resistance = recordNote.resistance;
+    NSString *group = recordNote.group;
 
     NSString *detailLabel = [[NSString alloc] initWithFormat:@"Repetition:%@\t\nResistance: %@kg\n Group    :     %@\t",repetition,resistance,group];
     cell.detailTextLabel.text = detailLabel;
     
+    [recordNote release];
+    
     return cell;
 }
 
-- (void)refreshSectionAndCell:(NSDictionary *)dict{
+- (void)refreshSectionAndCell:(NotePad *)aNote{
     if ([self.records count] == 0) {
         NSMutableArray *recordArray = [[NSMutableArray alloc] init];
-        [recordArray addObject:dict];
+        [recordArray addObject:aNote];
         self.records = recordArray;
     }else{
-        [self.records addObject:dict];
+        [self.records addObject:aNote];
     }
    
-    
-//    [self.records addObject:self.gotRecord];
-    NSMutableDictionary *todayDic = [[NSDictionary alloc] initWithObjectsAndKeys:self.recordDate,@"date",self.records,@"records", nil];
-    self.todayRecord = todayDic;
     NSLog(@"recordArray222 is %@",self.records);
     NSLog(@"gotRecord222is %@",self.gotRecord);
-    NSLog(@"TodayRecord222 is %@",self.todayRecord);
+
     //Reload Sections
 //    NSIndexSet *indexSet = [[NSIndexSet alloc] initWithIndex:0];
 //    [self.tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];

@@ -9,10 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "sqlite3.h"
 #import "NotePad.h"
-#import "NoteDb.h"
 
 @class NotePad;
-@class NoteDb;
 
 
 
@@ -33,7 +31,7 @@
 - (BOOL)deleteOneNote:(NotePad *)aNote;
 - (BOOL)update:(NotePad *)aNote;
 
-- (NoteDb *)selectAll;
-- (NoteDb *)selectNotes:(NotePad *)aNote;
+- (NSMutableArray *)selectAll;
+- (NSMutableArray *)selectNotes:(NSString *)selectNSString;
 
 @end

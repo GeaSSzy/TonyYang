@@ -20,6 +20,6 @@
 @property (strong, nonatomic) IBOutlet UIDatePicker *datePicker;
 
 @property (copy, nonatomic) NSString *catalogRec;
-@property (weak, nonatomic) id delegate;
+@property (assign, nonatomic) id delegate;
 
 @end

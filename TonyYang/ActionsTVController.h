@@ -7,13 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TYSQLite.h"
 
 @interface ActionsTVController : UITableViewController
 
 @property(strong, nonatomic) NSString *catalogGot;
 @property(strong, nonatomic) NSMutableDictionary *todayRecord;
-@property(strong, nonatomic) NSMutableDictionary *gotRecord;
-@property(strong, nonatomic) NSMutableArray *records;
+@property(strong, nonatomic) NotePad *gotRecord;
+@property(retain, nonatomic) NSMutableArray *records;
 @property(strong, nonatomic) NSString *recordDate;
 
 @end

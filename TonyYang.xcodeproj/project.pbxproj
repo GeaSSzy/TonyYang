@@ -30,8 +30,9 @@
 		4170FD9C1C18302500300602 /* TonyYangUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4170FD9B1C18302500300602 /* TonyYangUITests.m */; };
 		4170FDAB1C1833C900300602 /* DetailTVController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4170FDAA1C1833C900300602 /* DetailTVController.m */; };
 		4170FDAE1C18344100300602 /* TYhelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4170FDAD1C18344100300602 /* TYhelper.m */; };
-		41A30E0C1C26682C009DC7A8 /* ActionsTVController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A30E0B1C26682C009DC7A8 /* ActionsTVController.m */; };
-		41A30E491C26D992009DC7A8 /* ActionDetailTVController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A30E481C26D992009DC7A8 /* ActionDetailTVController.m */; };
+		417D38061C2E73220077E1D3 /* NotePad.m in Sources */ = {isa = PBXBuildFile; fileRef = 417D38051C2E73220077E1D3 /* NotePad.m */; };
+		41A30E0C1C26682C009DC7A8 /* ActionsTVController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A30E0B1C26682C009DC7A8 /* ActionsTVController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		41A30E491C26D992009DC7A8 /* ActionDetailTVController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A30E481C26D992009DC7A8 /* ActionDetailTVController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		41B31B911C2AC50A008FF894 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 41B31B401C2AC50A008FF894 /* ASIAuthenticationDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		41B31B921C2AC50A008FF894 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 41B31B431C2AC50A008FF894 /* ASIDataCompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		41B31B931C2AC50A008FF894 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 41B31B451C2AC50A008FF894 /* ASIDataDecompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -69,8 +70,6 @@
 		413FD0831C2D0C000070E766 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		413FD0851C2D0E0A0070E766 /* TYSQLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TYSQLite.h; path = "Supporting Test Files/TYSQLite.h"; sourceTree = "<group>"; };
 		413FD0861C2D0E0A0070E766 /* TYSQLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TYSQLite.m; path = "Supporting Test Files/TYSQLite.m"; sourceTree = "<group>"; };
-		413FD0881C2D1E250070E766 /* NotePad.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NotePad.h; path = ../NotePad.h; sourceTree = "<group>"; };
-		413FD0891C2D1E3F0070E766 /* NoteDb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NoteDb.h; path = ../NoteDb.h; sourceTree = "<group>"; };
 		414D67E81C1D2732003A14AE /* LGCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGCalendar.h; sourceTree = "<group>"; };
 		414D67E91C1D2732003A14AE /* LGCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGCalendar.m; sourceTree = "<group>"; };
 		414D67EA1C1D2732003A14AE /* LGCalendarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGCalendarButton.h; sourceTree = "<group>"; };
@@ -108,6 +107,8 @@
 		4170FDAA1C1833C900300602 /* DetailTVController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailTVController.m; sourceTree = "<group>"; };
 		4170FDAC1C18344100300602 /* TYhelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYhelper.h; sourceTree = "<group>"; };
 		4170FDAD1C18344100300602 /* TYhelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYhelper.m; sourceTree = "<group>"; };
+		417D38041C2E73220077E1D3 /* NotePad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotePad.h; sourceTree = "<group>"; };
+		417D38051C2E73220077E1D3 /* NotePad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotePad.m; sourceTree = "<group>"; };
 		41A30E0A1C26682C009DC7A8 /* ActionsTVController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionsTVController.h; sourceTree = "<group>"; };
 		41A30E0B1C26682C009DC7A8 /* ActionsTVController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionsTVController.m; sourceTree = "<group>"; };
 		41A30E471C26D992009DC7A8 /* ActionDetailTVController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionDetailTVController.h; sourceTree = "<group>"; };
@@ -216,9 +217,9 @@
 				4170FD8F1C18302500300602 /* TonyYangTests */,
 				4170FD9A1C18302500300602 /* TonyYangUITests */,
 				4170FD711C18302500300602 /* Products */,
-				41B31BB61C2AC55A008FF894 /* CFNetwork.framework */,
-				41B31BBA1C2AC576008FF894 /* MobileCoreServices.framework */,
 				41B31BB81C2AC56C008FF894 /* SystemConfiguration.framework */,
+				41B31BBA1C2AC576008FF894 /* MobileCoreServices.framework */,
+				41B31BB61C2AC55A008FF894 /* CFNetwork.framework */,
 				416D46311C2CCACD003D36A5 /* libz.1.2.5.tbd */,
 				413FD0831C2D0C000070E766 /* libsqlite3.0.tbd */,
 			);
@@ -264,8 +265,8 @@
 		4170FD731C18302500300602 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				413FD0881C2D1E250070E766 /* NotePad.h */,
-				413FD0891C2D1E3F0070E766 /* NoteDb.h */,
+				417D38041C2E73220077E1D3 /* NotePad.h */,
+				417D38051C2E73220077E1D3 /* NotePad.m */,
 				413FD0851C2D0E0A0070E766 /* TYSQLite.h */,
 				413FD0861C2D0E0A0070E766 /* TYSQLite.m */,
 				4170FDAC1C18344100300602 /* TYhelper.h */,
@@ -470,6 +471,7 @@
 				41A30E0C1C26682C009DC7A8 /* ActionsTVController.m in Sources */,
 				4170FD7B1C18302500300602 /* FirstViewController.m in Sources */,
 				4170FDAE1C18344100300602 /* TYhelper.m in Sources */,
+				417D38061C2E73220077E1D3 /* NotePad.m in Sources */,
 				41B31B921C2AC50A008FF894 /* ASIDataCompressor.m in Sources */,
 				41B31B911C2AC50A008FF894 /* ASIAuthenticationDialog.m in Sources */,
 				41A30E491C26D992009DC7A8 /* ActionDetailTVController.m in Sources */,

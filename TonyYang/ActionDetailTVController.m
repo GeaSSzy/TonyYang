@@ -73,33 +73,23 @@
     //Insert delegate code
     //delegate date
     [self.delegate setValue:pickerDate forKey:@"recordDate"];
+    NSLog(@"pickerDate is OK");
     //delegate record
     if ([self.delegate respondsToSelector:@selector(refreshSectionAndCell:)]) {
         [self.delegate setValue:actionNote forKey:@"gotRecord"];
+        NSLog(@"gotRecord is OK");
     }
     
     //popOut
     for (UIViewController *actionsTV in self.navigationController.viewControllers){
         if ([actionsTV isKindOfClass:[ActionsTVController class]]) {
-            [self.delegate performSelector:@selector(refreshSectionAndCell:)withObject:actionRecord];
+            [self.delegate performSelector:@selector(refreshSectionAndCell:)withObject:actionNote];
             NSLog(@"popOut");
             [self.navigationController popToViewController:actionsTV animated:YES];
         }
     }
     
 }
-
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-//    NSString *excercise = self.excerciseField.text;
-//    NSString *repetition = self.repetitionField.text;
-//    NSString *resistance = self.resistanceField.text;
-//    NSString *group = self.groupField.text;
-//    NSDictionary *actionRecord = [[NSDictionary alloc] initWithObjectsAndKeys:excercise,@"excercise", self.catalogRec,@"catalog",resistance,@"resistance", repetition,@"repication",group,@"group", nil];
-//    if ([segue.identifier isEqualToString:@"backToActions"]){
-//        ActionsTVController *backTVController = segue.destinationViewController;
-//        backTVController.gotRecord = actionRecord;
-//    }
-//}
 
 - (IBAction)keyboardHidden:(id)sender {
     [self.view endEditing:YES];

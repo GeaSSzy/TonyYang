@@ -155,11 +155,11 @@
     return NO;
 }
 
-- (BOOL)update:(NotePad *)aNote{
+- (BOOL)update:(NSString *)updateString{
     //更新语句
-    NSString *updateString = [NSString stringWithFormat:
-                              @"update note set catalog='%@', exercise='%@', resistance=%f, repetition=%d, groupTitle=%d, date='%@', tagID='%@', uuid='%@', status='%@'",
-                              aNote.catalog, aNote.exercise, aNote.resistance, aNote.repetition, aNote.group, aNote.date, aNote.tagID, aNote.uuid, aNote.status];
+//    NSString *updateString = [NSString stringWithFormat:
+//                              @"update note set catalog='%@', exercise='%@' where id=%d",
+//                              aNote.catalog, aNote.exercise];
     const char *updateSql = [updateString UTF8String];
     //执行更新语句
     if (sqlite3_exec(database, updateSql, NULL, NULL, &errorMsg) == SQLITE_OK) {

@@ -14,7 +14,7 @@
 @property(strong, nonatomic) NSString *catalogGot;
 @property(strong, nonatomic) NSMutableDictionary *todayRecord;
 @property(strong, nonatomic) NotePad *gotRecord;
-@property(retain, nonatomic) NSMutableArray *records;
+@property(copy, nonatomic) NSMutableArray *records;
 @property(strong, nonatomic) NSString *recordDate;
 
 @end

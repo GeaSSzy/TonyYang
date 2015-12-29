@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TYSQLite.h"
+#import "Reachability.h"
 
 @interface TYhelper : NSObject
 
@@ -16,6 +18,11 @@
 + (NSDictionary *)serverDataToAppData: (NSDictionary *)serverData;
 + (NSString *)syncGet:(NSURL *)url;
 + (NSString *)syncPost:(NSURL *)url HTTPBody: (NSData *)body;
++ (NSMutableArray *)notePadToArray:(NSArray *)noteArray;
+
+//检查网络是否可用
++ (BOOL)NetWorkIsOk;
+
 
 
 @end

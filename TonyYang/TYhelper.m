@@ -14,6 +14,26 @@
 
 @implementation TYhelper
 
++ (BOOL)NetWorkIsOk{
+    if (
+        ([[Reachability reachabilityForInternetConnection] currentReachabilityStatus] != NotReachable)
+        &&
+        ([[Reachability reachabilityForLocalWiFi] currentReachabilityStatus] != NotReachable)) {
+        return YES;
+    }else{
+        return NO;
+    }
+}
+
++ (NSMutableArray *)notePadToArray:(NSArray *)noteArray{
+    NSMutableArray *recordArray = [[NSMutableArray alloc] init];
+    for (NotePad *oneNote in noteArray) {
+        NSDictionary *oneDict = [[NSDictionary alloc] initWithObjectsAndKeys:oneNote.exercise, @"exercise", oneNote.catalog, @"catalog", oneNote.resistance, @"resistance", oneNote.repetition, @"repetition", oneNote.group, @"groups", oneNote.date, @"date", oneNote.tagID, @"tagid", nil];
+        [recordArray addObject:oneDict];
+    }
+    return recordArray;
+}
+
 + (NSDictionary *)serverDataToAppData:(NSDictionary *)serverData{
     NSArray *positionsList = @[@"Abs", @"Back", @"Biceps", @"Chest", @"Leg", @"Shoulder", @"Triceps"];
     NSMutableArray *absArray = [[NSMutableArray alloc] init];

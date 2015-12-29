@@ -21,7 +21,7 @@
 		416D46321C2CCACD003D36A5 /* libz.1.2.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 416D46311C2CCACD003D36A5 /* libz.1.2.5.tbd */; };
 		4170FD751C18302500300602 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4170FD741C18302500300602 /* main.m */; };
 		4170FD781C18302500300602 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4170FD771C18302500300602 /* AppDelegate.m */; };
-		4170FD7B1C18302500300602 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4170FD7A1C18302500300602 /* FirstViewController.m */; };
+		4170FD7B1C18302500300602 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4170FD7A1C18302500300602 /* FirstViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4170FD7E1C18302500300602 /* HistoryDataTVController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4170FD7D1C18302500300602 /* HistoryDataTVController.m */; };
 		4170FD811C18302500300602 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4170FD7F1C18302500300602 /* Main.storyboard */; };
 		4170FD831C18302500300602 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4170FD821C18302500300602 /* Assets.xcassets */; };

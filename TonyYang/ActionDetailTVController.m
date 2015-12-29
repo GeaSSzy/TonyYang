@@ -43,13 +43,13 @@
     
     //训练date
     NSDateFormatter *yearMonth = [[NSDateFormatter alloc] init];
-    [yearMonth setDateFormat:@"YYYY-MM-dd"];
+    [yearMonth setDateFormat:@"yyyy-MM-dd"];
     NSDate *selected = [self.datePicker date];
     NSString *pickerDate = [yearMonth stringFromDate:selected];
     
     //create tagID
     NSDateFormatter *forTagID = [[NSDateFormatter alloc] init];
-    [forTagID setDateFormat:@"YYYYMMddHHmmss"];
+    [forTagID setDateFormat:@"yyyyMMddHHmmss"];
     NSDate *recordDate = [NSDate date];
     NSString *tagID = [forTagID stringFromDate:recordDate];
     

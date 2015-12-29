@@ -25,15 +25,14 @@
     NSString *path = [[NSString alloc] initWithFormat:@"http://175.130.116.203:10080/body/calender/2015-12"];
     NSURL *url = [NSURL URLWithString:path];
     
+    //判断网络连接是否OK
+    if ([TYhelper NetWorkIsOk]) {
     //SyncGet
     NSString *calenderStr = [TYhelper syncGet:url];
     self.fileContent = calenderStr;
     NSData *jsonData = [self.fileContent dataUsingEncoding:NSUTF8StringEncoding];
     NSDictionary *calenderDict = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableLeaves error:nil];
     NSLog(@"GotDict is %@",calenderDict);
-//    self.calenderData = calenderDict;
-//    NSArray *dateArray = [self.calenderData objectForKey:@"days"];
-//    self.calenderDate = dateArray;
     
     NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *ourDocumentPath = [documentPaths objectAtIndex:0];
@@ -49,8 +48,10 @@
     NSData *testData = [testGotStr dataUsingEncoding:NSUTF8StringEncoding];
     NSDictionary *testDict = [NSJSONSerialization JSONObjectWithData:testData options:NSJSONReadingMutableLeaves error:nil];
     NSLog(@"testDict from File is %@",testDict);
-    
-    
+    }else{
+        NSLog(@"There is no InterNet");
+    }
+
 //-----------------------------------------------------------------------------------------------------------------------------
     LGCalendar *calendar = [[LGCalendar alloc] initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, 240)];
     [self.view addSubview:calendar];

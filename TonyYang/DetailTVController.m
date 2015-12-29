@@ -23,13 +23,14 @@ static NSString *DetailCell = @"DetailCell";
     [super viewDidLoad];
     
     // Do any additional setup after loading the view, typically from a nib.
-    
+    //判断网络连接是否OK
+    if ([TYhelper NetWorkIsOk]) {
 //    NSString *path = [[NSString alloc] initWithFormat:@"http://175.130.116.203:10080/body/records/%@-%@-%@",self.gotYear,self.gotMonth,self.gotDay];
     NSString *path = [[NSString alloc] initWithFormat:@"http://175.130.116.203:10080/body/records/%@",self.gotData];
 //    NSString *path = [[NSString alloc] initWithFormat:@"http://175.130.116.203:10080/body/records/2015-12-07"];
     NSURL *url = [NSURL URLWithString:path];
 
-//SyncGet
+    //SyncGet
     NSString *receivedStr = [TYhelper syncGet:url];
     NSData *jsonData = [receivedStr dataUsingEncoding:NSUTF8StringEncoding];
     NSDictionary *receivedDict = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableLeaves error:nil];
@@ -38,6 +39,7 @@ static NSString *DetailCell = @"DetailCell";
     self.dataApp = appDict;
     NSArray *keysArray = [self.dataApp allKeys];
     self.appKeys = keysArray;
+    }
 }
 
 - (void)didReceiveMemoryWarning {

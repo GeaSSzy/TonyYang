@@ -126,6 +126,7 @@ static NSString *DetailCell = @"actionsCell";
 - (NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewRowAction *deleteRowAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"Delete" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath){
         //title可自定义
+        //定义Delete button function
         NSLog(@"点击删除");
         NotePad *deletePad = [[NotePad alloc] init];
         deletePad = [self.records objectAtIndex:[indexPath row]];
@@ -138,6 +139,7 @@ static NSString *DetailCell = @"actionsCell";
         [self removeOneCell:indexPath];
     }];//此处是iOS8.0以后苹果最新推出的api，UITableViewRowAction，Style是划出的标签颜色等状态的定义，这里也可以自行定义
     UITableViewRowAction *editRowAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"Edit" handler:^(UITableViewRowAction *action, NSIndexPath *indePath){
+        //定义Edit button function
         
     }];
     editRowAction.backgroundColor = [UIColor colorWithRed:0 green:124/255.0 blue:233/255.0 alpha:1];    //定义RowAction的颜色
@@ -168,7 +170,6 @@ static NSString *DetailCell = @"actionsCell";
     [recordArray removeObjectAtIndex:row];
     self.records = recordArray;
     NSLog(@"number of self.records is %lu", (unsigned long)[self.records count]);
-    NSLog(@"%@ will be removed",[self.records objectAtIndex:row]);
     NSIndexPath *index = [NSIndexPath indexPathForRow:row inSection:0];
     NSMutableArray *indexPaths = [[NSMutableArray alloc] init];
     [indexPaths addObject:index];

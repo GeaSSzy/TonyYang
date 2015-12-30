@@ -23,6 +23,7 @@
 //检查网络是否可用
 + (BOOL)NetWorkIsOk;
 
-
+//更新数据库
++ (void)postRecordToSQL:(NSDictionary *)records;
 
 @end

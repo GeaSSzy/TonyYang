@@ -14,6 +14,44 @@
 
 @implementation TYhelper
 
++ (void)postRecordToSQL:(NSDictionary *)records{
+    NSArray *noteArray = [records objectForKey:@"records"];
+    TYSQLite *sqlUpdate = [[TYSQLite alloc] init];
+    for (NSDictionary *oneDict in noteArray) {
+        NSString *updateString = [NSString stringWithFormat:@"update note set uuid=\"%@\", status=\"settled\" where tagID=\"%@\"",[oneDict objectForKey:@"uuid"], [oneDict objectForKey:@"tagid"]];
+        if ([sqlUpdate open]){
+            BOOL *updateOK = [sqlUpdate update:updateString];
+        }
+    }
+}
+
++ (void)getDataToSQL:(NSDictionary *)records{
+    NSArray *noteArray = [records objectForKey:@"records"];
+    TYSQLite *tySQL = [[TYSQLite alloc] init];
+    for (NSDictionary *oneDict in noteArray){
+        NSString *selectString = [NSString stringWithFormat:@"select * from note where tagID=\"%@\"",[oneDict objectForKey:@"tagid"]];
+        if ([tySQL open]) {
+            NSMutableArray *selectArray = [tySQL selectNotes:selectString];
+            if ([selectArray count] == 0) {
+                NotePad *insertNote = [[NotePad alloc] init];
+                insertNote.catalog = [oneDict objectForKey:@"catalog"];
+                insertNote.exercise = [oneDict objectForKey:@"exercise"];
+                insertNote.resistance = [oneDict objectForKey:@"resistance"];
+                insertNote.repetition = [oneDict objectForKey:@"repetition"];
+//                insertNote.group = [oneDict objectForKey:@"groups"];
+                insertNote.date = [oneDict objectForKey:@"date"];
+                insertNote.tagID = [oneDict objectForKey:@"tagid"];
+                insertNote.uuid = [oneDict objectForKey:@"uuid"];
+                insertNote.status = @"settled";
+                
+                BOOL *insertOK = [tySQL insert:insertNote];
+            }
+        }
+        
+    }
+}
+
+//Check Network status
 + (BOOL)NetWorkIsOk{
     if (
         ([[Reachability reachabilityForInternetConnection] currentReachabilityStatus] != NotReachable)
@@ -45,7 +83,7 @@
     NSMutableArray *tricepsArray = [[NSMutableArray alloc] init];
     NSMutableDictionary *appData = [[NSMutableDictionary alloc] initWithObjectsAndKeys:absArray, @"Abs", backArray, @"Back", bicepsArray, @"Biceps", chestArray, @"Chest", legArray, @"Leg", shoulderArray, @"Shoulder", tricepsArray, @"Triceps", nil];
     NSMutableArray *serverArray = [serverData objectForKey:@"records"];
-//将data按照部位分类，并存入appData中
+    //将data按照部位分类，并存入appData中
     for (NSString *positionlist in positionsList) {
         for (NSDictionary *actionlist in serverArray){
             if ([[actionlist objectForKey:@"catalog"] isEqualToString:positionlist]){
@@ -54,7 +92,7 @@
         }
     }
     
-//删除Value为空的元素
+    //删除Value为空的元素
     for (NSString *positionlist in positionsList){
         if([[appData objectForKey:positionlist] count] == 0){
             [appData removeObjectForKey:positionlist];

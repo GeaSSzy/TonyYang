@@ -9,6 +9,9 @@
 #import "ActionDetailTVController.h"
 #import "ActionsTVController.h"
 #import "TYSQLite.h"
+#import "TYhelper.h"
+#import "ASIHTTPRequest.h"
+#import "ASIFormDataRequest.h"
 
 @interface ActionDetailTVController ()
 
@@ -68,7 +71,7 @@
     
     TYSQLite *tySql = [[TYSQLite alloc] init];
     
-        BOOL insertOK = [tySql insert:actionNote];
+    BOOL insertOK = [tySql insert:actionNote];
 
     //Insert delegate code
     //delegate date
@@ -80,15 +83,55 @@
         NSLog(@"gotRecord is OK");
     }
     
+    //PostToServer
+    if ([TYhelper NetWorkIsOk]) {
+        //selectNotes
+        NSString *selectString = [[NSString alloc] initWithFormat:@"select * from note where status=\"willRecord\""];
+        NSMutableArray *recordArray = [[NSMutableArray alloc] init];
+        //从数据库中select
+        if([tySql open] != 0){
+            recordArray = [tySql selectNotes:selectString];
+            NSLog(@"recordArray is %@",recordArray);
+            if ([recordArray count] != 0) {
+                self.toServerArray = [TYhelper notePadToArray:recordArray];
+                NSMutableDictionary *bodyDic = [[NSMutableDictionary alloc] initWithObjectsAndKeys:self.toServerArray, @"records", nil];
+                self.toServerDict = bodyDic;
+                NSData *dataDic = [NSJSONSerialization dataWithJSONObject:self.toServerDict options:NSJSONWritingPrettyPrinted error:nil];
+                
+                NSString *urlString = [[NSString alloc] initWithFormat:@"http://xjq314.com:10080/body/train"];
+                NSURL *url = [NSURL URLWithString:urlString];
+                
+                ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+                [request setDelegate:self];
+                [request setPostBody:dataDic];
+                [request startAsynchronous];
+            }
+        }
+    }
+
     //popOut
     for (UIViewController *actionsTV in self.navigationController.viewControllers){
         if ([actionsTV isKindOfClass:[ActionsTVController class]]) {
             [self.delegate performSelector:@selector(refreshSectionAndCell:)withObject:actionNote];
-            NSLog(@"popOut");
             [self.navigationController popToViewController:actionsTV animated:YES];
         }
     }
     
+}
+
+- (void)requestFinished:(ASIHTTPRequest *)request{
+    NSString *responseString = [request responseString];
+    NSLog(@"responseString is %@",responseString);
+    
+    NSData *jsonData = [responseString dataUsingEncoding:NSUTF8StringEncoding];
+    NSDictionary *receivedDict = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableLeaves error:nil];
+    [TYhelper postRecordToSQL:receivedDict];
+}
+
+- (void)requestFailed:(ASIHTTPRequest *)request{
+    NSError *error = [request error];
+    NSLog(@"error is %@", error);
+    NSLog(@"request error");
 }
 
 - (IBAction)keyboardHidden:(id)sender {

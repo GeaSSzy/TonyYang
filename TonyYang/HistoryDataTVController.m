@@ -70,8 +70,8 @@
 //    [self.textField setText:[NSString stringWithFormat:@"%@",selectDate]];
     NSDateFormatter *dayFormatter = [[NSDateFormatter alloc] init];
     NSDateFormatter *monthFormatter = [[NSDateFormatter alloc] init];
-    [dayFormatter setDateFormat:@"YYYY-MM-dd"];
-    [monthFormatter setDateFormat:@"YYYY-MM"];
+    [dayFormatter setDateFormat:@"yyyy-MM-dd"];
+    [monthFormatter setDateFormat:@"yyyy-MM"];
     self.selectedData = [dayFormatter stringFromDate:selectDate];
     self.monthData = [monthFormatter stringFromDate:selectDate];
     if (self.selectedData != nil) {

@@ -24,6 +24,7 @@
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
     NSString *path = [documentsDirectory stringByAppendingPathComponent:@"noteList.db"];
+    NSLog(@"path is %@",path);
     NSFileManager *fileManager = [NSFileManager defaultManager];
     BOOL *find = [fileManager fileExistsAtPath:path];
     //判断是否存在
@@ -224,7 +225,7 @@
 - (NSMutableArray *)selectNotes:(NSString *)selectNSString{
     NSMutableArray *noteDb = [[[NSMutableArray alloc] init] autorelease];
     //查询Note语句
-//    NSString *selectNSString = [NSString stringWithFormat:@"select * from note where tagID=%@", aNote.tagID];
+//    NSString *selectNSString = [NSString stringWithFormat:@"select * from note where tagID=\"%@\"", aNote.tagID];
     //转成UTF-8的c风格
     const char *selectSql = [selectNSString UTF8String];
     //执行查询

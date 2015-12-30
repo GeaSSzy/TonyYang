@@ -33,6 +33,7 @@
 		417D38061C2E73220077E1D3 /* NotePad.m in Sources */ = {isa = PBXBuildFile; fileRef = 417D38051C2E73220077E1D3 /* NotePad.m */; };
 		41A30E0C1C26682C009DC7A8 /* ActionsTVController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A30E0B1C26682C009DC7A8 /* ActionsTVController.m */; };
 		41A30E491C26D992009DC7A8 /* ActionDetailTVController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A30E481C26D992009DC7A8 /* ActionDetailTVController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		41A64BE21C337B90005C8A02 /* ModifyDetailTVController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A64BE11C337B90005C8A02 /* ModifyDetailTVController.m */; };
 		41B31B911C2AC50A008FF894 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 41B31B401C2AC50A008FF894 /* ASIAuthenticationDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		41B31B921C2AC50A008FF894 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 41B31B431C2AC50A008FF894 /* ASIDataCompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		41B31B931C2AC50A008FF894 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 41B31B451C2AC50A008FF894 /* ASIDataDecompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -113,6 +114,8 @@
 		41A30E0B1C26682C009DC7A8 /* ActionsTVController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionsTVController.m; sourceTree = "<group>"; };
 		41A30E471C26D992009DC7A8 /* ActionDetailTVController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionDetailTVController.h; sourceTree = "<group>"; };
 		41A30E481C26D992009DC7A8 /* ActionDetailTVController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionDetailTVController.m; sourceTree = "<group>"; };
+		41A64BE01C337B90005C8A02 /* ModifyDetailTVController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModifyDetailTVController.h; path = ../ModifyDetailTVController.h; sourceTree = "<group>"; };
+		41A64BE11C337B90005C8A02 /* ModifyDetailTVController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModifyDetailTVController.m; path = ../ModifyDetailTVController.m; sourceTree = "<group>"; };
 		41B31B3F1C2AC50A008FF894 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		41B31B401C2AC50A008FF894 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
 		41B31B411C2AC50A008FF894 /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
@@ -252,6 +255,8 @@
 				41A30E0B1C26682C009DC7A8 /* ActionsTVController.m */,
 				41A30E471C26D992009DC7A8 /* ActionDetailTVController.h */,
 				41A30E481C26D992009DC7A8 /* ActionDetailTVController.m */,
+				41A64BE01C337B90005C8A02 /* ModifyDetailTVController.h */,
+				41A64BE11C337B90005C8A02 /* ModifyDetailTVController.m */,
 				4170FD7F1C18302500300602 /* Main.storyboard */,
 				4170FD821C18302500300602 /* Assets.xcassets */,
 				4170FD841C18302500300602 /* LaunchScreen.storyboard */,
@@ -461,6 +466,7 @@
 				41B31B961C2AC50A008FF894 /* ASIHTTPRequest.m in Sources */,
 				414D67F81C1D2732003A14AE /* NSDate+calender.m in Sources */,
 				4170FD7E1C18302500300602 /* HistoryDataTVController.m in Sources */,
+				41A64BE21C337B90005C8A02 /* ModifyDetailTVController.m in Sources */,
 				41B31B981C2AC50A008FF894 /* ASINetworkQueue.m in Sources */,
 				41B31B951C2AC50A008FF894 /* ASIFormDataRequest.m in Sources */,
 				41B31B931C2AC50A008FF894 /* ASIDataDecompressor.m in Sources */,

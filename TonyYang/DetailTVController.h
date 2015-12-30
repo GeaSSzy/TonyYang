@@ -17,6 +17,7 @@
 @property (strong, nonatomic) NSString *gotMonth;
 @property (strong, nonatomic) NSString *gotDay;
 @property (strong, nonatomic) NSString *gotData;
+@property (strong, nonatomic) NSDictionary *sqlDict;
 
 //@property (strong, nonatomic) IBOutlet UILabel *timesValue;
 //@property (strong, nonatomic) IBOutlet UILabel *weightValue;

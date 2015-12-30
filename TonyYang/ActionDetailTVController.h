@@ -21,5 +21,7 @@
 
 @property (copy, nonatomic) NSString *catalogRec;
 @property (assign, nonatomic) id delegate;
+@property (strong, nonatomic)NSMutableArray *toServerArray;
+@property (strong, nonatomic)NSDictionary *toServerDict;
 
 @end

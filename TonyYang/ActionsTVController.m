@@ -8,6 +8,7 @@
 
 #import "ActionsTVController.h"
 #import "ActionDetailTVController.h"
+#import "ModifyDetailTVController.h"
 
 static NSString *DetailCell = @"actionsCell";
 
@@ -24,7 +25,7 @@ static NSString *DetailCell = @"actionsCell";
     self.title = self.catalogGot;
     
     NSDateFormatter *yearMonth = [[NSDateFormatter alloc] init];
-    [yearMonth setDateFormat:@"YYYY-MM-dd"];
+    [yearMonth setDateFormat:@"yyyy-MM-dd"];
     NSDate *today = [NSDate date];
     NSString *todayStr = [yearMonth stringFromDate:today];
     
@@ -49,34 +50,35 @@ static NSString *DetailCell = @"actionsCell";
 }
 
 //- (void)viewWillAppear:(BOOL)animated{
-//    NSDateFormatter *yearMonth = [[NSDateFormatter alloc] init];
-//    [yearMonth setDateFormat:@"YYYY-MM-dd"];
-//    NSDate *today = [NSDate date];
-//    NSString *todayStr = [yearMonth stringFromDate:today];
-//
-//    //selectNotes
-//    NSString *selectString = [[NSString alloc] initWithFormat:@"select * from note where catalog=\"%@\" and date=\"%@\"", self.catalogGot,todayStr];
-//    NSLog(@"selectString is %@",selectString);
-//    NSMutableArray *recordArray = [[NSMutableArray alloc] init];
-//
-//    TYSQLite *tySql = [[TYSQLite alloc] init];
-//    if([tySql open] != 0){
-//        recordArray = [tySql selectNotes:selectString];
-//        NSLog(@"recordArray is %@",recordArray);
-//        if ([recordArray count] != 0) {
-//            self.records = recordArray;
-//            NSLog(@"Mark");
-//        }
-//    }
+
 //}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    UIViewController *destination = segue.destinationViewController;
-    if ([destination respondsToSelector:@selector(setDelegate:)]) {
-        [destination setValue:self forKey:@"delegate"];
-    }
-    if ([destination respondsToSelector:@selector(setCatalogRec:)]){
-        [destination setValue:self.catalogGot forKey:@"catalogRec"];
+    if ([segue.identifier isEqualToString:@"ModifyCell"]) {
+        ModifyDetailTVController *modifyController = segue.destinationViewController;
+        if ([modifyController respondsToSelector:@selector(setDelegateModify:)]) {
+            [modifyController setValue:self forKey:@"delegateModify"];
+        }
+        if ([modifyController respondsToSelector:@selector(setIndexModify:)]) {
+            NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+            [modifyController setValue:indexPath forKey:@"indexModify"];
+        }
+        if ([modifyController respondsToSelector:@selector(setModifyNote:)]) {
+            NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+            NSUInteger row = [indexPath row];
+            NotePad *selectNote = [self.records objectAtIndex:row];
+            NSLog(@"NotePad is %@",selectNote);
+  //          NSLog(@"NotePad group is %@",selectNote.repetition);
+            [modifyController setValue:selectNote forKey:@"modifyNote"];
+        }
+    }else{
+        ActionDetailTVController *destination = segue.destinationViewController;
+        if ([destination respondsToSelector:@selector(setDelegate:)]) {
+            [destination setValue:self forKey:@"delegate"];
+        }
+        if ([destination respondsToSelector:@selector(setCatalogRec:)]){
+            [destination setValue:self.catalogGot forKey:@"catalogRec"];
+        }
     }
 }
 
@@ -140,6 +142,8 @@ static NSString *DetailCell = @"actionsCell";
     }];//此处是iOS8.0以后苹果最新推出的api，UITableViewRowAction，Style是划出的标签颜色等状态的定义，这里也可以自行定义
     UITableViewRowAction *editRowAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"Edit" handler:^(UITableViewRowAction *action, NSIndexPath *indePath){
         //定义Edit button function
+        NSLog(@"点击编辑");
+        [self performSegueWithIdentifier:@"ModifyCell" sender:self];
         
     }];
     editRowAction.backgroundColor = [UIColor colorWithRed:0 green:124/255.0 blue:233/255.0 alpha:1];    //定义RowAction的颜色

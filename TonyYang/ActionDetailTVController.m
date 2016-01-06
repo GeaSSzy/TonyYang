@@ -60,9 +60,8 @@
     actionNote.exercise = exercise;
     actionNote.resistance = resistance;
     actionNote.repetition = repetition;
-    actionNote.group = group;
+    actionNote.group = @"1";
     actionNote.date = pickerDate;
-    NSLog(@"date is %@",actionNote.date);
     actionNote.tagID = tagID;
     actionNote.uuid = @"uuidNeeded";
     actionNote.status = @"willRecord";
@@ -102,9 +101,21 @@
                 NSURL *url = [NSURL URLWithString:urlString];
                 
                 ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
-                [request setDelegate:self];
                 [request setPostBody:dataDic];
                 [request startAsynchronous];
+                [request setCompletionBlock :^{
+                    // 请求响应结束，返回 responseString
+                    NSString *responseString = [request responseString ]; // 对于 2 进制数据，使用 NSData 返回 NSData *responseData = [request responseData];
+                    NSLog ( @"block test is %@" ,responseString);
+                    NSData *jsonData = [responseString dataUsingEncoding:NSUTF8StringEncoding];
+                    NSDictionary *receivedDict = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableLeaves error:nil];
+                    [TYhelper postRecordToSQL:receivedDict];
+                }];
+                [request setFailedBlock :^{
+                    // 请求响应失败，返回错误信息
+                    NSError *error = [request error ];
+                    NSLog ( @"error:%@" ,[error userInfo ]);
+                }];
             }
         }
     }
@@ -119,20 +130,20 @@
     
 }
 
-- (void)requestFinished:(ASIHTTPRequest *)request{
-    NSString *responseString = [request responseString];
-    NSLog(@"responseString is %@",responseString);
-    
-    NSData *jsonData = [responseString dataUsingEncoding:NSUTF8StringEncoding];
-    NSDictionary *receivedDict = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableLeaves error:nil];
-    [TYhelper postRecordToSQL:receivedDict];
-}
-
-- (void)requestFailed:(ASIHTTPRequest *)request{
-    NSError *error = [request error];
-    NSLog(@"error is %@", error);
-    NSLog(@"request error");
-}
+//- (void)requestFinished:(ASIHTTPRequest *)request{
+//    NSString *responseString = [request responseString];
+//    NSLog(@"responseString is %@",responseString);
+//    
+//    NSData *jsonData = [responseString dataUsingEncoding:NSUTF8StringEncoding];
+//    NSDictionary *receivedDict = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableLeaves error:nil];
+//    [TYhelper postRecordToSQL:receivedDict];
+//}
+//
+//- (void)requestFailed:(ASIHTTPRequest *)request{
+//    NSError *error = [request error];
+//    NSLog(@"error is %@", error);
+//    NSLog(@"request error");
+//}
 
 - (IBAction)keyboardHidden:(id)sender {
     [self.view endEditing:YES];

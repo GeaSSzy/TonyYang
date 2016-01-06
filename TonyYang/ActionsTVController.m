@@ -139,6 +139,14 @@ static NSString *DetailCell = @"actionsCell";
             BOOL deleteOK = [deleteSql update:updateString];
         }
         [self removeOneCell:indexPath];
+        if ([TYhelper NetWorkIsOk]) {
+            TYSQLite *postDel = [[TYSQLite alloc] init];
+            if ([postDel open]) {
+                [TYhelper deleteWillDelete];
+            }
+        }
+        NSLog(@"-----");
+        [TYhelper deleteUnnecessaryDataInSql];
     }];//此处是iOS8.0以后苹果最新推出的api，UITableViewRowAction，Style是划出的标签颜色等状态的定义，这里也可以自行定义
     UITableViewRowAction *editRowAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"Edit" handler:^(UITableViewRowAction *action, NSIndexPath *indePath){
         //定义Edit button function

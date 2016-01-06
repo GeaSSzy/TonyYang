@@ -25,23 +25,43 @@ static NSString *DetailCell = @"DetailCell";
     // Do any additional setup after loading the view, typically from a nib.
     //判断网络连接是否OK
     if ([TYhelper NetWorkIsOk]) {
-//      NSString *path = [[NSString alloc] initWithFormat:@"http://175.130.116.203:10080/body/records/%@-%@-%@",self.gotYear,self.gotMonth,self.gotDay];
         NSString *path = [[NSString alloc] initWithFormat:@"http://xjq314.com:10080/body/records/%@",self.gotData];
+        NSLog(@"url is %@",path);
 //      NSString *path = [[NSString alloc] initWithFormat:@"http://175.130.116.203:10080/body/records/2015-12-07"];
         NSURL *url = [NSURL URLWithString:path];
 
         //SyncGet
         NSString *receivedStr = [TYhelper syncGet:url];
+        NSLog(@"receivedStr is %@",receivedStr);
         NSData *jsonData = [receivedStr dataUsingEncoding:NSUTF8StringEncoding];
         NSDictionary *receivedDict = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableLeaves error:nil];
         self.dataServer = receivedDict;
+        NSLog(@"dataServer is %@",self.dataServer);
+        
+        //SaveToSQLite
+        [TYhelper getDataToSQL:self.dataServer];
+//        NotePad *insertNote = [[NotePad alloc] init];
+//        for (NSDictionary *record in [self.dataServer objectForKey:@"records"]){
+//            insertNote.catalog = [record objectForKey:@"catalog"];
+//            insertNote.date = [record objectForKey:@"date"];
+//            insertNote.exercise = [record objectForKey:@"exercise"];
+//            insertNote.repetition = [record objectForKey:@"repetition"];
+//            insertNote.resistance = [record objectForKey:@"resistance"];
+//            insertNote.uuid = [record objectForKey:@"uuid"];
+//            insertNote.group = @"1";
+//            insertNote.status = @"settled";
+//            insertNote.tagID = @"tagIDnotNeeded";
+//        }
+//        TYSQLite *tySql = [[TYSQLite alloc] init];
+//            BOOL insert = [tySql insert:insertNote];
+
+        
+        
+        //Server data to App data
         NSDictionary *appDict = [TYhelper serverDataToAppData:self.dataServer];
         self.dataApp = appDict;
         NSArray *keysArray = [self.dataApp allKeys];
         self.appKeys = keysArray;
-            
-        //SaveToSQLite
-        
     }
 }
 

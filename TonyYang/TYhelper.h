@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "TYSQLite.h"
 #import "Reachability.h"
+#import "ASIHTTPRequest.h"
 
 @interface TYhelper : NSObject
 
@@ -25,5 +26,14 @@
 
 //更新数据库
 + (void)postRecordToSQL:(NSDictionary *)records;
++ (void)deleteUnnecessaryDataInSql;
+
+//与Server同步数据
++ (void)postWillRecord;
++ (void)deleteWillDelete;
++ (void)getDataToSQL:(NSDictionary *)records;
+
+//计算日期月份
++ (NSDate *)getPriousorLaterDateFromDate:(NSDate *)date withMonth:(int)month;
 
 @end

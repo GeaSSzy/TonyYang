@@ -25,26 +25,126 @@
     }
 }
 
++ (void)deleteUnnecessaryDataInSql{
+    NSString *deleteString = [[NSString alloc] initWithFormat:@"delete from note where status=\"willDelete\" and uuid=\"uuidNeeded\""];
+    TYSQLite *tySql = [[TYSQLite alloc] init];
+    BOOL delUDISql = [tySql deleteOneNote:deleteString];
+}
+
++ (void)postWillRecord{
+    //selectNotes
+    NSString *selectString = [[NSString alloc] initWithFormat:@"select * from note where status=\"willRecord\""];
+    NSMutableArray *recordArray = [[NSMutableArray alloc] init];
+    NSMutableArray *toServerArray = [[NSMutableArray alloc] init];
+    NSMutableDictionary *toServerDict = [[NSMutableDictionary alloc] init];
+    //从数据库中select
+    TYSQLite *tySql = [[TYSQLite alloc] init];
+    if([tySql open] != 0){
+        recordArray = [tySql selectNotes:selectString];
+        NSLog(@"recordArray is %@",recordArray);
+        if ([recordArray count] != 0) {
+            toServerArray = [TYhelper notePadToArray:recordArray];
+            NSMutableDictionary *bodyDic = [[NSMutableDictionary alloc] initWithObjectsAndKeys:toServerArray, @"records", nil];
+            toServerDict = bodyDic;
+            NSData *dataDic = [NSJSONSerialization dataWithJSONObject:toServerDict options:NSJSONWritingPrettyPrinted error:nil];
+            
+            NSString *urlString = [[NSString alloc] initWithFormat:@"http://xjq314.com:10080/body/train"];
+            NSURL *url = [NSURL URLWithString:urlString];
+            
+            ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+            [request setPostBody:dataDic];
+            [request startAsynchronous];
+            [request setCompletionBlock :^{
+                // 请求响应结束，返回 responseString
+                NSString *responseString = [request responseString ]; // 对于 2 进制数据，使用 NSData 返回 NSData *responseData = [request responseData];
+                NSLog ( @"block test is %@" ,responseString);
+                NSData *jsonData = [responseString dataUsingEncoding:NSUTF8StringEncoding];
+                NSDictionary *receivedDict = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableLeaves error:nil];
+                [TYhelper postRecordToSQL:receivedDict];
+            }];
+            [request setFailedBlock :^{
+                // 请求响应失败，返回错误信息
+                NSError *error = [request error ];
+                NSLog ( @"error:%@" ,[error userInfo ]);
+            }];
+        }
+    }
+}
+
++ (void)deleteWillDelete{
+    //selectNotes
+    NSString *selectString = [[NSString alloc] initWithFormat:@"select * from note where status=\"willDelete\" and uuid<>\"uuidNeeded\""];
+    NSMutableArray *recordArray = [[NSMutableArray alloc] init];
+    NSMutableArray *toServerArray = [[NSMutableArray alloc] init];
+    NSMutableDictionary *toServerDict = [[NSMutableDictionary alloc] init];
+    //从数据库中select
+    TYSQLite *tySql = [[TYSQLite alloc] init];
+    if([tySql open] != 0){
+        recordArray = [tySql selectNotes:selectString];
+        NSLog(@"recordArray is %@",recordArray);
+        if ([recordArray count] != 0) {
+            for (NotePad *oneNote in recordArray){
+                NSMutableDictionary *bodyDic = [[NSMutableDictionary alloc] initWithObjectsAndKeys:oneNote.uuid, @"uuid", nil];
+                toServerDict = bodyDic;
+                NSData *dataDic = [NSJSONSerialization dataWithJSONObject:toServerDict options:NSJSONWritingPrettyPrinted error:nil];
+                
+                NSString *urlString = [[NSString alloc] initWithFormat:@"http://xjq314.com:10080/body/record/%@",oneNote.uuid];
+                NSLog(@"URLString is %@",urlString);
+                NSLog(@"uuid is %@",oneNote.uuid);
+                NSURL *url = [NSURL URLWithString:urlString];
+                
+                ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+                [request buildPostBody];
+                [request setRequestMethod:@"DELETE"];
+                [request setPostBody:dataDic];
+                [request startAsynchronous];
+                [request setCompletionBlock :^{
+                    // 请求响应结束，返回 responseString
+                    NSString *responseString = [request responseString ]; // 对于 2 进制数据，使用 NSData 返回 NSData *responseData = [request responseData];
+                    NSLog ( @"block response is %@" ,responseString);
+                    NSData *responseData = [responseString dataUsingEncoding:NSUTF8StringEncoding];
+                    NSDictionary *responseDict = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:nil];
+                    NSString *deleteStr = [[NSString alloc] initWithFormat:@"delete from note where uuid=\"%@\"",[responseDict objectForKey:@"uuid"]];
+                    if ([tySql open]) {
+                        BOOL deleteUuid = [tySql deleteOneNote:deleteStr];
+                    }
+                    
+                }];
+                [request setFailedBlock :^{
+                    // 请求响应失败，返回错误信息
+                    NSError *error = [request error ];
+                    NSLog ( @"error:%@" ,[error userInfo ]);
+                }];
+            }
+        }
+        if ([tySql open]) {
+            [TYhelper deleteUnnecessaryDataInSql];
+        }
+    }
+}
+
 + (void)getDataToSQL:(NSDictionary *)records{
     NSArray *noteArray = [records objectForKey:@"records"];
     TYSQLite *tySQL = [[TYSQLite alloc] init];
+    NotePad *insertNote = [[NotePad alloc] init];
     for (NSDictionary *oneDict in noteArray){
-        NSString *selectString = [NSString stringWithFormat:@"select * from note where tagID=\"%@\"",[oneDict objectForKey:@"tagid"]];
+        NSString *selectString = [NSString stringWithFormat:@"select * from note where uuid=\"%@\"",[oneDict objectForKey:@"uuid"]];
         if ([tySQL open]) {
             NSMutableArray *selectArray = [tySQL selectNotes:selectString];
-            if ([selectArray count] == 0) {
-                NotePad *insertNote = [[NotePad alloc] init];
+            if ([selectArray count] == 0) {          
                 insertNote.catalog = [oneDict objectForKey:@"catalog"];
                 insertNote.exercise = [oneDict objectForKey:@"exercise"];
                 insertNote.resistance = [oneDict objectForKey:@"resistance"];
                 insertNote.repetition = [oneDict objectForKey:@"repetition"];
-//                insertNote.group = [oneDict objectForKey:@"groups"];
+                insertNote.group = [[NSString alloc] initWithFormat:@"1"];
                 insertNote.date = [oneDict objectForKey:@"date"];
-                insertNote.tagID = [oneDict objectForKey:@"tagid"];
+                insertNote.tagID = [[NSString alloc] initWithFormat:@"tagidNotNeeded"];
                 insertNote.uuid = [oneDict objectForKey:@"uuid"];
-                insertNote.status = @"settled";
+                insertNote.status = [[NSString alloc] initWithFormat:@"settled"];
+
+                TYSQLite *tySql = [[TYSQLite alloc] init];
                 
-                BOOL *insertOK = [tySQL insert:insertNote];
+                BOOL insertOK = [tySql insert:insertNote];
             }
         }
         
@@ -86,7 +186,8 @@
     //将data按照部位分类，并存入appData中
     for (NSString *positionlist in positionsList) {
         for (NSDictionary *actionlist in serverArray){
-            if ([[actionlist objectForKey:@"catalog"] isEqualToString:positionlist]){
+            NSRange urgentRange = [[actionlist objectForKey:@"catalog"] rangeOfString:positionlist];
+            if (urgentRange.location != NSNotFound){
                 [[appData objectForKey:positionlist] addObject:actionlist];
             }
         }
@@ -123,4 +224,25 @@
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
     NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
+
++ (NSDate *)getPriousorLaterDateFromDate:(NSDate *)date withMonth:(int)month
+
+{
+    
+    NSDateComponents *comps = [[NSDateComponents alloc] init];
+    
+    [comps setMonth:month];
+    
+    NSCalendar *calender = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    
+    NSDate *mDate = [calender dateByAddingComponents:comps toDate:date options:0];
+    
+    [comps release];
+    
+    [calender release];
+    
+    return mDate;
+    
+}
+
 @end

@@ -91,7 +91,6 @@
 - (BOOL)insert:(NotePad *)aNote{
     if ([self open])
 {
-   
     static char *sql = "insert into note(catalog, exercise, resistance, repetition, groupTitle, date, tagID, uuid, status)values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
     if (sqlite3_prepare_v2(database, sql, -1, &statement, NULL) != SQLITE_OK) {
         NSLog(@"Insert error: failed to insert: aNote");
@@ -138,9 +137,9 @@
     return NO;
 }
 
-- (BOOL)deleteOneNote:(NotePad *)aNote{
+- (BOOL)deleteOneNote:(NSString *)deleteString{
     //删除某条数据
-    NSString *deleteString = [NSString stringWithFormat:@"delete from note where uuid = %@",aNote.uuid];
+//    NSString *deleteString = [NSString stringWithFormat:@"delete from note where uuid = %@",aNote.uuid];
     //转成utf-8的c风格
     const char *deleteSql = [deleteString UTF8String];
     //执行删除语句

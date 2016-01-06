@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "TYSQLite.h"
+#import "TYhelper.h"
 
 @interface ActionsTVController : UITableViewController
 

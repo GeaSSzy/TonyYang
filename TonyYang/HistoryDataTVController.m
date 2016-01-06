@@ -22,32 +22,52 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    NSString *path = [[NSString alloc] initWithFormat:@"http://175.130.116.203:10080/body/calender/2015-12"];
-    NSURL *url = [NSURL URLWithString:path];
+    NSDateFormatter *yearMonth = [[NSDateFormatter alloc] init];
+    [yearMonth setDateFormat:@"yyyy-MM"];
+    NSDate *today = [NSDate date];
+    NSDate *lastMonth = [TYhelper getPriousorLaterDateFromDate:today withMonth:-1];
+    NSDate *twoLastMonth = [TYhelper getPriousorLaterDateFromDate:today withMonth:-2];
+    
+    NSString *todayStr = [yearMonth stringFromDate:today];
+    NSString *lastStr = [yearMonth stringFromDate:lastMonth];
+    NSString *twoLastStr = [yearMonth stringFromDate:twoLastMonth];
+    
+    NSArray *monthArray = [[NSArray alloc] initWithObjects:todayStr, lastStr, twoLastStr, nil];
     
     //判断网络连接是否OK
     if ([TYhelper NetWorkIsOk]) {
-    //SyncGet
-    NSString *calenderStr = [TYhelper syncGet:url];
-    self.fileContent = calenderStr;
-    NSData *jsonData = [self.fileContent dataUsingEncoding:NSUTF8StringEncoding];
-    NSDictionary *calenderDict = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableLeaves error:nil];
-    NSLog(@"GotDict is %@",calenderDict);
-    
-    NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *ourDocumentPath = [documentPaths objectAtIndex:0];
-    NSString *calenderFile = @"calender.json";
-    NSString *FileName = [ourDocumentPath stringByAppendingPathComponent:calenderFile];
-    NSLog(@"FileAddress is %@",FileName);
-    self.fileAddress = FileName;
-    [self.fileContent writeToFile:self.fileAddress atomically:YES encoding:NSUTF8StringEncoding error:nil];
-    
-    NSString *testGotStr = [[NSString alloc] initWithContentsOfFile:self.fileAddress encoding:NSUTF8StringEncoding error:nil];
-    NSLog(@"Data length is %d",[testGotStr length]);
-    NSLog(@"testGotStr content is %@",testGotStr);
-    NSData *testData = [testGotStr dataUsingEncoding:NSUTF8StringEncoding];
-    NSDictionary *testDict = [NSJSONSerialization JSONObjectWithData:testData options:NSJSONReadingMutableLeaves error:nil];
-    NSLog(@"testDict from File is %@",testDict);
+        //SyncGet
+        NSMutableArray *daysArray = [[NSMutableArray alloc] init];
+        for (NSString *str in monthArray){
+            NSString *path = [[NSString alloc] initWithFormat:@"http://xjq314.com:10080/body/calender/%@",str];
+            NSURL *url = [NSURL URLWithString:path];
+            NSString *calenderStr = [TYhelper syncGet:url];
+            NSLog(@"calenderStr is %@",calenderStr);
+            NSData *jsonData = [calenderStr dataUsingEncoding:NSUTF8StringEncoding];
+            NSDictionary *calenderDict = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableLeaves error:nil];
+            NSLog(@"GotDict is %@",calenderDict);
+            [daysArray addObjectsFromArray:[calenderDict objectForKey:@"days"]];
+        }
+        NSDictionary *daysDict = [[NSDictionary alloc] initWithObjectsAndKeys:daysArray, @"days", nil];
+        NSData *daysData = [NSJSONSerialization dataWithJSONObject:daysDict options:NSJSONWritingPrettyPrinted error:nil];
+        NSString *daysString = [[NSString alloc] initWithData:daysData encoding:NSUTF8StringEncoding];
+        self.fileContent = daysString;
+        NSLog(@"fileContent is %@",self.fileContent);
+        
+        NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *ourDocumentPath = [documentPaths objectAtIndex:0];
+        NSString *calenderFile = @"calender.json";
+        NSString *FileName = [ourDocumentPath stringByAppendingPathComponent:calenderFile];
+        NSLog(@"FileAddress is %@",FileName);
+        self.fileAddress = FileName;
+        [self.fileContent writeToFile:self.fileAddress atomically:YES encoding:NSUTF8StringEncoding error:nil];
+        
+        NSString *testGotStr = [[NSString alloc] initWithContentsOfFile:self.fileAddress encoding:NSUTF8StringEncoding error:nil];
+        NSLog(@"Data length is %d",[testGotStr length]);
+        NSLog(@"testGotStr content is %@",testGotStr);
+        NSData *testData = [testGotStr dataUsingEncoding:NSUTF8StringEncoding];
+        NSDictionary *testDict = [NSJSONSerialization JSONObjectWithData:testData options:NSJSONReadingMutableLeaves error:nil];
+        NSLog(@"testDict from File is %@",testDict);
     }else{
         NSLog(@"There is no InterNet");
     }

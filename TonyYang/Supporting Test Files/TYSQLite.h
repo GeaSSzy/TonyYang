@@ -28,8 +28,8 @@
 //增加、删除、修改、查询
 - (BOOL)insert:(NotePad *)aNote;
 - (BOOL)deleteAllNote;
-- (BOOL)deleteOneNote:(NotePad *)aNote;
-- (BOOL)update:(NotePad *)aNote;
+- (BOOL)deleteOneNote:(NSString *)deleteString;
+- (BOOL)update:(NSString *)updateString;
 
 - (NSMutableArray *)selectAll;
 - (NSMutableArray *)selectNotes:(NSString *)selectNSString;

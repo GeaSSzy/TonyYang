@@ -29,7 +29,7 @@
 		4170FD911C18302500300602 /* TonyYangTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4170FD901C18302500300602 /* TonyYangTests.m */; };
 		4170FD9C1C18302500300602 /* TonyYangUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4170FD9B1C18302500300602 /* TonyYangUITests.m */; };
 		4170FDAB1C1833C900300602 /* DetailTVController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4170FDAA1C1833C900300602 /* DetailTVController.m */; };
-		4170FDAE1C18344100300602 /* TYhelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4170FDAD1C18344100300602 /* TYhelper.m */; };
+		4170FDAE1C18344100300602 /* TYhelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4170FDAD1C18344100300602 /* TYhelper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		417D38061C2E73220077E1D3 /* NotePad.m in Sources */ = {isa = PBXBuildFile; fileRef = 417D38051C2E73220077E1D3 /* NotePad.m */; };
 		41A30E0C1C26682C009DC7A8 /* ActionsTVController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A30E0B1C26682C009DC7A8 /* ActionsTVController.m */; };
 		41A30E491C26D992009DC7A8 /* ActionDetailTVController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A30E481C26D992009DC7A8 /* ActionDetailTVController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };

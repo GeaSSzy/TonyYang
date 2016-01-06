@@ -128,7 +128,7 @@ NSString *const KDateChangeNotification = @"KDateChangeNotificationName";
  读取本月的健身记录
  **/
 - (NSData *)gotRecordForCurrentMonth{
-    NSString *path = [[NSString alloc] initWithFormat:@"http://175.130.116.203:10080/body/calender/%@",self.calenderStr];
+    NSString *path = [[NSString alloc] initWithFormat:@"http://xjq314.com:10080/body/calender/%@",self.calenderStr];
     NSURL *url = [NSURL URLWithString:path];
     
     //SyncGet

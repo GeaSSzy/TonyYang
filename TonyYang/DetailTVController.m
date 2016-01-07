@@ -37,32 +37,31 @@ static NSString *DetailCell = @"DetailCell";
         NSDictionary *receivedDict = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableLeaves error:nil];
         self.dataServer = receivedDict;
         NSLog(@"dataServer is %@",self.dataServer);
-        
-        //SaveToSQLite
-        [TYhelper getDataToSQL:self.dataServer];
-//        NotePad *insertNote = [[NotePad alloc] init];
-//        for (NSDictionary *record in [self.dataServer objectForKey:@"records"]){
-//            insertNote.catalog = [record objectForKey:@"catalog"];
-//            insertNote.date = [record objectForKey:@"date"];
-//            insertNote.exercise = [record objectForKey:@"exercise"];
-//            insertNote.repetition = [record objectForKey:@"repetition"];
-//            insertNote.resistance = [record objectForKey:@"resistance"];
-//            insertNote.uuid = [record objectForKey:@"uuid"];
-//            insertNote.group = @"1";
-//            insertNote.status = @"settled";
-//            insertNote.tagID = @"tagIDnotNeeded";
-//        }
-//        TYSQLite *tySql = [[TYSQLite alloc] init];
-//            BOOL insert = [tySql insert:insertNote];
-
-        
-        
-        //Server data to App data
-        NSDictionary *appDict = [TYhelper serverDataToAppData:self.dataServer];
-        self.dataApp = appDict;
-        NSArray *keysArray = [self.dataApp allKeys];
-        self.appKeys = keysArray;
+                
+    }else{
+        TYSQLite *tySql = [[TYSQLite alloc] init];
+        NSString *selectNSString = [NSString stringWithFormat:@"select * from note where date=\"%@\"", self.gotData];
+        if ([tySql open]) {
+            NSArray *sqlArray = [tySql selectNotes:selectNSString];
+            NSMutableArray *dictArray = [[NSMutableArray alloc] init];
+            //From NotePad to Dictionary
+            for (NotePad *oneNote in sqlArray){
+                NSDictionary *oneDict = [[NSDictionary alloc] initWithObjectsAndKeys:oneNote.catalog, @"catalog", oneNote.date, @"date", oneNote.exercise, @"exercise", oneNote.repetition, @"repetition", oneNote.resistance, @"resistance", oneNote.uuid, @"uuid", nil];
+                [dictArray addObject:oneDict];
+            }
+            NSDictionary *records = [[NSDictionary alloc] initWithObjectsAndKeys:dictArray, @"records", nil];
+            self.dataServer = records;
+        }
     }
+    //SaveToSQLite
+    [TYhelper getDataToSQL:self.dataServer];
+    
+    //Server data to App data
+    NSDictionary *appDict = [TYhelper serverDataToAppData:self.dataServer];
+    self.dataApp = appDict;
+    NSArray *keysArray = [self.dataApp allKeys];
+    self.appKeys = keysArray;
+    
 }
 
 - (void)didReceiveMemoryWarning {

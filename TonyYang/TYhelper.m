@@ -134,11 +134,11 @@
             if ([selectArray count] == 0) {          
                 insertNote.catalog = [oneDict objectForKey:@"catalog"];
                 insertNote.exercise = [oneDict objectForKey:@"exercise"];
-                insertNote.resistance = [oneDict objectForKey:@"resistance"];
-                insertNote.repetition = [oneDict objectForKey:@"repetition"];
+                insertNote.resistance = [[NSString alloc] initWithFormat:@"%d",[oneDict objectForKey:@"resistance"]];
+                insertNote.repetition = [[NSString alloc] initWithFormat:@"%d",[oneDict objectForKey:@"repetition"]];
                 insertNote.group = [[NSString alloc] initWithFormat:@"1"];
                 insertNote.date = [oneDict objectForKey:@"date"];
-                insertNote.tagID = [[NSString alloc] initWithFormat:@"tagidNotNeeded"];
+                insertNote.tagID = [[NSString alloc] initWithFormat:@"noTagID"];
                 insertNote.uuid = [oneDict objectForKey:@"uuid"];
                 insertNote.status = [[NSString alloc] initWithFormat:@"settled"];
 
